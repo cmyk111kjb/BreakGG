@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>BreakGG — The Chromebook Unblock Lab</title>
+<meta name="description" content="BreakGG keeps 100 hand-tested proxy nodes alive around the clock, hands you the methods when proxies aren't enough, and puts a tech on a call to do it for you. Five tiers, one unblocked Chromebook." />
+<meta name="theme-color" content="#0a0c0f" />
+<link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><rect width="48" height="48" rx="11" fill="%23ff4a1c"/><path d="M28 6 17 27h7l-4 15 13-22h-8l3-14z" fill="%23fff"/></svg>' />
+<link rel="preload" href="assets/fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body>
+
+<div class="noise" aria-hidden="true"></div>
+
+<!-- ================= HEADER ================= -->
+<header class="site-head" id="top">
+  <div class="head-in">
+    <a class="brand" href="#top" aria-label="BreakGG home">
+      <!-- BRAND MARK — swap this whole <svg> (or the .brand block) for the customer logo -->
+      <svg class="mark" viewBox="0 0 48 48" aria-hidden="true">
+        <defs>
+          <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#ff6a3d"/><stop offset="1" stop-color="#d63405"/>
+          </linearGradient>
+        </defs>
+        <rect width="48" height="48" rx="11" fill="url(#lg)"/>
+        <path class="crack" d="M28 6 17 27h7l-4 15 13-22h-8l3-14z" fill="#fff"/>
+      </svg>
+      <span class="brand-word">BREAK<b>GG</b></span>
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      <a href="#wall">The Wall</a>
+      <a href="#plans">Plans</a>
+      <a href="#vault">Vault</a>
+      <a href="#dfy">Done-For-You</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+
+    <span class="head-status"><i class="dot"></i> Wall tested <span data-since>4 min</span> ago</span>
+    <a class="btn head-cta" href="#plans">Get unblocked</a>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<div class="mobile-nav" id="mobileNav">
+  <a href="#wall"><small>Tier 1</small>The Wall</a>
+  <a href="#subone"><small>Sub-tier 1.2</small>Name Your Own</a>
+  <a href="#plans"><small>Pricing</small>All five tiers</a>
+  <a href="#vault"><small>Tiers 2–3</small>Method Vault</a>
+  <a href="#dfy"><small>Tier 4</small>Done-For-You</a>
+  <a href="#reviews"><small>Proof</small>Reviews</a>
+  <a href="#faq"><small>Questions</small>FAQ</a>
+</div>
+
+<main>
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="gridlines" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="hero-head">
+      <span class="eyebrow" data-reveal>BreakGG // Chromebook access lab</span>
+      <h1 class="d">
+        <span class="l1" data-scramble>Every block</span>
+        <span class="l2" data-scramble>has a break.</span>
+        <span class="l3" data-scramble>This is yours.</span>
+      </h1>
+    </div>
+    <div class="hero-grid">
+      <div>
+        <p class="lede" data-reveal>BreakGG keeps <b style="color:var(--tx-dark)">100 hand-tested proxy nodes</b> alive around the clock, hands you the methods when proxies aren't enough, and — if you'd rather not lift a finger — puts a tech on a call who does it for you. Five tiers. One unblocked Chromebook.</p>
+        <div class="hero-ctas" data-reveal>
+          <a class="btn" href="#plans">Pick your tier <span class="ar">→</span></a>
+          <a class="btn btn--ghost" href="#wall" id="spinBtn">Spin the rig <span class="ar">↻</span></a>
+        </div>
+        <div class="hero-chips stagger" data-reveal>
+          <span class="chip"><b data-count="100">0</b><span>live proxy nodes</span></span>
+          <span class="chip"><b>6h</b><span>test cycle</span></span>
+          <span class="chip"><b data-count="4180">0</b><span>members</span></span>
+          <span class="chip"><b>99.2%</b><span>wall uptime</span></span>
+        </div>
+      </div>
+
+      <div class="stage" id="stage" data-reveal aria-label="Interactive 3D Chromebook — drag to rotate">
+      <div class="stage-fallback"><img src="assets/img/chromebook.png" alt="Chromebook" /></div>
+      <div class="stage-hud" aria-hidden="true">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <span class="tag tl-tag">RIG-01 · HP-class chromebook</span>
+        <span class="tag tr-tag" data-hud-fps>60 fps</span>
+        <span class="tag bl-tag" data-hud-rot>YAW 000°</span>
+        <span class="drag-hint" id="dragHint">
+          <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><path d="M5 1 1 6l4 5M11 1l4 5-4 5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Drag to rotate
+        </span>
+      </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- live node ticker -->
+  <div class="ticker" aria-hidden="true"><div class="ticker-track" id="ticker"></div></div>
+</section>
+
+<!-- ================= MARQUEE BAND ================= -->
+<div class="band-marquee" aria-hidden="true">
+  <div class="ticker-track" id="marquee"></div>
+</div>
+
+<!-- ================= PROXY WALL ================= -->
+<section class="band" id="wall">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow" data-reveal>Tier 1 · $5/mo</span>
+        <h2 class="d" data-reveal="mask" style="margin-top:14px">100 proxies.<br />Zero ghosts.</h2>
+      </div>
+      <span class="idx" data-reveal>01 / The Wall</span>
+    </div>
+
+    <div class="wall-top">
+      <div>
+        <p class="lede" data-reveal>Most "proxy lists" are graveyards — half the links died in 2024 and the page still says "updated daily". The Wall is different: every node is pinged from three regions every six hours, and anything that fails two sweeps in a row is pulled and replaced inside the hour.</p>
+        <div class="wall-points stagger" data-reveal>
+          <div class="wpoint"><span class="num">01</span><div><h4>Tested, not trusted</h4><p>Automated sweeps every 6 hours plus human spot-checks. You see the same status board we do.</p></div></div>
+          <div class="wpoint"><span class="num">02</span><div><h4>Dead means gone</h4><p>A node that fails twice is out of the list and a fresh one drops in. The counter at the bottom never lies.</p></div></div>
+          <div class="wpoint"><span class="num">03</span><div><h4>No install, no extensions</h4><p>Every node works as a plain browser route. Nothing to sideload, nothing for the filter to fingerprint.</p></div></div>
+        </div>
+      </div>
+
+      <div class="wpoint" style="grid-template-columns:1fr;align-content:start;gap:4px" data-reveal>
+        <h4 style="margin-bottom:10px">Live test cycle</h4>
+        <div class="preview-body" style="padding:0;grid-template-columns:1fr 1fr">
+          <div class="pstat"><b data-cycle-last>14:02</b><span>last sweep</span></div>
+          <div class="pstat"><b data-cycle-next>19:58</b><span>next sweep</span></div>
+          <div class="pstat"><b data-cycle-swap>7</b><span>nodes swapped today</span></div>
+          <div class="pstat"><b data-cycle-lat>41ms</b><span>median latency</span></div>
+        </div>
+        <p style="margin:14px 0 0;font-size:13.5px;color:var(--tx-dark-mut)">Sweeps run from Oregon, Frankfurt and Singapore. A node needs two green lights in a row to rejoin the Wall.</p>
+      </div>
+    </div>
+
+    <div class="wall-panel" data-reveal>
+      <div class="wall-bar">
+        <span class="ttl"><i class="dot"></i> the-wall · live status board</span>
+        <input class="wall-search" id="wallSearch" type="search" placeholder="filter nodes…" aria-label="Filter proxy nodes" />
+        <div class="seg" id="wallSeg" role="group" aria-label="Filter by status">
+          <button class="on" data-f="all">All</button>
+          <button data-f="online">Online</button>
+          <button data-f="busy">Busy</button>
+          <button data-f="rot">Rotating</button>
+        </div>
+        <button class="retest" id="retest"><svg class="spin" width="12" height="12" viewBox="0 0 12 12" fill="none" style="display:none"><path d="M6 1a5 5 0 1 1-4.7 3.3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span>Run sweep</span></button>
+      </div>
+      <div class="wall-scroll">
+        <table class="wall">
+          <thead>
+            <tr>
+              <th data-sort="id">#</th>
+              <th data-sort="node">Node</th>
+              <th data-sort="proto">Route</th>
+              <th data-sort="lat">Latency</th>
+              <th data-sort="up">Uptime 30d</th>
+              <th data-sort="tested">Last tested</th>
+              <th data-sort="status">Status</th>
+            </tr>
+          </thead>
+          <tbody id="wallBody"></tbody>
+        </table>
+      </div>
+      <div class="wall-foot">
+        <span>Showing <b id="wallCount" style="color:var(--tx-dark)">100</b> / 100 nodes</span>
+        <span>Swapped today: <b id="wallSwap">7</b></span>
+        <span>Next auto-sweep in <b id="wallNext">5h 58m</b></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= NAME YOUR OWN ================= -->
+<section class="band name-band" id="subone">
+  <div class="wrap name-grid">
+    <div>
+      <span class="eyebrow" data-reveal>Sub-tier 1.2 · $7/mo</span>
+      <h2 class="d" data-reveal="mask" style="font-size:clamp(34px,5.2vw,68px);margin-top:14px">Name it.<br />Own it.</h2>
+      <p class="lede" data-reveal style="margin-top:22px">Shared proxies get burned fast — four hundred classmates on one node is how nodes die. Sub One gives you a proxy instance that belongs to you: your name on it, your badge color, your private URL, and a priority slot on the fastest hardware in the pool.</p>
+      <div class="wall-points stagger" data-reveal style="margin-top:26px">
+        <div class="wpoint"><span class="num">A</span><div><h4>Your name, your badge</h4><p>Pick any name that isn't taken and a badge color. It shows on your URL, your badge and your status card.</p></div></div>
+        <div class="wpoint"><span class="num">B</span><div><h4>Priority hardware</h4><p>Sub One instances schedule ahead of the shared pool — median 19ms vs 41ms on the public Wall.</p></div></div>
+        <div class="wpoint"><span class="num">C</span><div><h4>Still just $2 more</h4><p>Everything in Tier 1 stays included. Upgrade or downgrade any month, prorated to the day.</p></div></div>
+      </div>
+    </div>
+
+    <div class="builder" data-reveal>
+      <label for="nameInput">Claim your proxy name</label>
+      <div class="name-row">
+        <input class="name-input" id="nameInput" maxlength="18" placeholder="library-pass" autocomplete="off" spellcheck="false" />
+      </div>
+      <div class="swatches" id="swatches" role="group" aria-label="Badge color">
+        <button data-c="#ff4a1c" style="background:#ff4a1c" class="on" aria-label="Orange"></button>
+        <button data-c="#2fe08c" style="background:#2fe08c" aria-label="Mint"></button>
+        <button data-c="#7fd4ff" style="background:#7fd4ff" aria-label="Ice"></button>
+        <button data-c="#ffc53d" style="background:#ffc53d" aria-label="Amber"></button>
+        <button data-c="#c9d3da" style="background:#c9d3da" aria-label="Steel"></button>
+      </div>
+      <div class="preview-card">
+        <div class="preview-top">
+          <span class="preview-badge" id="pvBadge" style="background:#ff4a1c">?</span>
+          <div style="min-width:0">
+            <div class="preview-name" id="pvName">your-proxy</div>
+            <div class="preview-url" id="pvUrl">https://your-proxy.breakgg.link</div>
+          </div>
+        </div>
+        <div class="preview-body">
+          <div class="pstat"><b style="color:var(--mint)">19ms</b><span>priority latency</span></div>
+          <div class="pstat"><b>1 / 1</b><span>seats used</span></div>
+          <div class="pstat"><b>100%</b><span>uptime 30d</span></div>
+        </div>
+        <div class="preview-foot">
+          <span class="avail" id="pvAvail">✓ name available</span>
+          <button class="copy-btn" id="copyUrl">Copy URL</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PLANS ================= -->
+<section class="band on-paper" id="plans">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow" data-reveal>Membership · cancel anytime</span>
+        <h2 class="d" data-reveal="mask" style="margin-top:14px">Five ways in.</h2>
+      </div>
+      <span class="idx" data-reveal>03 / Pricing — every tier includes everything below it</span>
+    </div>
+
+    <div class="deck" id="deck">
+
+      <article class="plan" style="--tier:#5b6b79">
+        <div class="p-head">
+          <span class="tier-tag">Tier 1</span>
+          <h3>The Wall</h3>
+          <p class="blurb">The tested list. One hundred live proxy nodes, re-checked four times a day so you never click a dead link.</p>
+          <div class="price"><b>$5</b><span>/ month</span></div>
+        </div>
+        <ul>
+          <li>100 proxy nodes, re-tested every 6 hours</li>
+          <li>Dead nodes pulled &amp; replaced within the hour</li>
+          <li>Latency, region &amp; route type on every node</li>
+          <li>Works in-browser — no installs, no extensions</li>
+          <li>Friday fresh-node drop, every week</li>
+        </ul>
+        <div class="p-side">
+          <div class="best-for"><b>Best for</b>Getting around a filter today without touching a single setting.</div>
+          <a class="btn btn--ink" href="#cta">Start at $5 <span class="ar">→</span></a>
+        </div>
+      </article>
+
+      <article class="plan plan--hero" style="--tier:#ff4a1c">
+        <span class="flag">Most popular</span>
+        <div class="p-head">
+          <span class="tier-tag">Sub-tier 1.2 · “Sub One”</span>
+          <h3>Name Your Own</h3>
+          <p class="blurb">Everything in The Wall, plus a proxy that's yours alone — named by you, badged by you, never shared.</p>
+          <div class="price"><b>$7</b><span>/ month</span></div>
+        </div>
+        <ul>
+          <li>Your own personal unblocker instance</li>
+          <li>Custom name + badge color (try the builder above)</li>
+          <li>Priority hardware — median 19ms vs 41ms shared</li>
+          <li>Private URL that stays yours while you're a member</li>
+          <li>Everything in Tier 1 included</li>
+        </ul>
+        <div class="p-side">
+          <div class="best-for"><b>Best for</b>Anyone tired of sharing one proxy with four hundred classmates.</div>
+          <a class="btn" href="#subone">Claim a name <span class="ar">→</span></a>
+        </div>
+      </article>
+
+      <article class="plan" style="--tier:#e8890c">
+        <div class="p-head">
+          <span class="tier-tag">Tier 2</span>
+          <h3>The Method Vault</h3>
+          <p class="blurb">Proxies are plan A. The Vault is plans B through M — partial, temporary unblock methods with honest ratings.</p>
+          <div class="price"><b>$10</b><span>/ month</span></div>
+        </div>
+        <ul>
+          <li>12+ partial-unblock methods, rated &amp; dated</li>
+          <li>Step-by-step with screenshots, not forum riddles</li>
+          <li>“How long it lasts” label on every method</li>
+          <li>Post-mortems the week a method stops working</li>
+          <li>Member chat — 4,000+ people comparing notes</li>
+          <li class="mut">Everything in Tier 1 + Sub One included</li>
+        </ul>
+        <div class="p-side">
+          <div class="best-for"><b>Best for</b>When the whole proxy wall gets burned and you need a plan B by third period.</div>
+          <a class="btn btn--ink" href="#vault">Open the vault <span class="ar">→</span></a>
+        </div>
+      </article>
+
+      <article class="plan" style="--tier:#0f9d76">
+        <span class="flag">Best value</span>
+        <div class="p-head">
+          <span class="tier-tag">Tier 3</span>
+          <h3>Full Release</h3>
+          <p class="blurb">The permanent track. Full-unblock paths for your exact build — partial or permanent, your call.</p>
+          <div class="price"><b>$15</b><span>/ month</span></div>
+        </div>
+        <ul>
+          <li>Full-unblock tracks: partial <em>and</em> permanent</li>
+          <li>Verified on 40+ Chromebook builds &amp; policy versions</li>
+          <li>Build check — send your version, get your exact path</li>
+          <li>Rollback guides: back to factory before inspection day</li>
+          <li>1:1 tech chat, median first reply 11 minutes</li>
+          <li class="mut">Everything through Tier 2 included</li>
+        </ul>
+        <div class="p-side">
+          <div class="best-for"><b>Best for</b>Done-with-it members who want it fixed for good, and reversible.</div>
+          <a class="btn btn--ink" href="#cta">Go full release <span class="ar">→</span></a>
+        </div>
+      </article>
+
+      <article class="plan plan--hero" style="--tier:#7fd4ff; border-color:rgba(127,212,255,.4)">
+        <span class="flag" style="background:#ff4a1c">Limited slots</span>
+        <div class="p-head">
+          <span class="tier-tag" style="background:#7fd4ff;color:#0a0c0f">Tier 4</span>
+          <h3>Done For You</h3>
+          <p class="blurb">You pick three outcomes from the Vault. A BreakGG tech gets on a live session and does them, on your machine, while you watch.</p>
+          <div class="price"><b>$30</b><span>/ month</span></div>
+        </div>
+        <ul>
+          <li>You choose 3 outcomes — we perform them for you</li>
+          <li>25-minute live remote session, you watch every click</li>
+          <li>Post-session hardening so the fix actually sticks</li>
+          <li>30-day “broke again? we fix it free” guarantee</li>
+          <li>Night &amp; weekend scheduling around class hours</li>
+          <li class="mut">Everything through Tier 3 included</li>
+        </ul>
+        <div class="p-side">
+          <div class="best-for"><b>Best for</b>People who'd rather pay $30 than read a single guide. Zero judgment.</div>
+          <a class="btn" href="#dfy">Book a session <span class="ar">→</span></a>
+        </div>
+      </article>
+    </div>
+
+    <div class="cmp" data-reveal>
+      <table class="cmp-t">
+        <thead>
+          <tr><th>What's inside</th><th>T1 · $5</th><th>Sub 1 · $7</th><th>T2 · $10</th><th>T3 · $15</th><th>T4 · $30</th></tr>
+        </thead>
+        <tbody>
+          <tr><th>Tested proxy wall (100 nodes)</th><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+          <tr><th>Personal named proxy instance</th><td><span class="no">—</span></td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+          <tr><th>Method Vault (partial unblocks)</th><td><span class="no">—</span></td><td><span class="no">—</span></td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+          <tr><th>Full-unblock tracks + rollback</th><td><span class="no">—</span></td><td><span class="no">—</span></td><td><span class="no">—</span></td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+          <tr><th>1:1 tech chat</th><td><span class="no">—</span></td><td><span class="no">—</span></td><td>chat only</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+          <tr><th>Live session, 3 outcomes done for you</th><td><span class="no">—</span></td><td><span class="no">—</span></td><td><span class="no">—</span></td><td><span class="no">—</span></td><td><b>3 / mo</b></td></tr>
+          <tr><th>Fix-it guarantee</th><td>7 days</td><td>7 days</td><td>14 days</td><td>30 days</td><td><b>30 days</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ================= VAULT ================= -->
+<section class="band" id="vault">
+  <div class="gridlines" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow" data-reveal>Tiers 2–3 · what's inside</span>
+        <h2 class="d" data-reveal="mask" style="margin-top:14px">The Method<br />Vault.</h2>
+      </div>
+      <span class="idx" data-reveal>04 / Partial → permanent, rated honestly</span>
+    </div>
+    <p class="lede" data-reveal style="margin-bottom:clamp(30px,4vw,48px)">Every method in the Vault carries three labels before you spend ten minutes on it: how far it gets you (partial or full), how long it survives (a class period to forever), and how many members confirmed it on your build this month. No clickbait, no “WORKING 2023!!!”.</p>
+
+    <div class="vault-grid stagger" data-reveal>
+      <article class="vcard">
+        <div class="v-top"><span class="v-id">V-01</span><span class="vtag temp">Temporary</span></div>
+        <h4>Network path swap</h4>
+        <p>Route around the filter's blunt edge using a path it hasn't indexed yet. Quick, quiet, and honest about its expiry date.</p>
+        <div class="vmeta"><span>Difficulty<b>Easy</b></span><span>Lasts<b>1 class → 1 wk</b></span><span>Confirmed<b>92%</b></span></div>
+        <div class="blur-lines" aria-hidden="true"><i></i><i></i><i></i></div>
+        <span class="lock">🔒 Members only</span>
+      </article>
+      <article class="vcard">
+        <div class="v-top"><span class="v-id">V-02</span><span class="vtag part">Partial</span></div>
+        <h4>Profile-level reset</h4>
+        <p>A partial unblock that lives inside your own profile instead of the machine — survives reboots, not policy pushes.</p>
+        <div class="vmeta"><span>Difficulty<b>Medium</b></span><span>Lasts<b>3 → 12 days</b></span><span>Confirmed<b>84%</b></span></div>
+        <div class="blur-lines" aria-hidden="true"><i></i><i></i><i></i></div>
+        <span class="lock">🔒 Members only</span>
+      </article>
+      <article class="vcard">
+        <div class="v-top"><span class="v-id">V-03</span><span class="vtag temp">Temporary</span></div>
+        <h4>Policy clock dodge</h4>
+        <p>Uses the gap between policy pushes and sync windows. Great for a finals week, useless forever — and we say so.</p>
+        <div class="vmeta"><span>Difficulty<b>Easy</b></span><span>Lasts<b>2 → 5 days</b></span><span>Confirmed<b>78%</b></span></div>
+        <div class="blur-lines" aria-hidden="true"><i></i><i></i><i></i></div>
+        <span class="lock">🔒 Members only</span>
+      </article>
+      <article class="vcard">
+        <div class="v-top"><span class="v-id">V-04</span><span class="vtag part">Partial</span></div>
+        <h4>Extension side-door</h4>
+        <p>Which add-ons still sideload on managed builds this quarter, and the three that now phone home. Updated monthly.</p>
+        <div class="vmeta"><span>Difficulty<b>Medium</b></span><span>Lasts<b>1 → 4 wks</b></span><span>Confirmed<b>71%</b></span></div>
+        <div class="blur-lines" aria-hidden="true"><i></i><i></i><i></i></div>
+        <span class="lock">🔒 Members only</span>
+      </article>
+      <article class="vcard">
+        <div class="v-top"><span class="v-id">V-05</span><span class="vtag perm">Permanent</span></div>
+        <h4>The full release track</h4>
+        <p>Tier 3's centerpiece: the build-specific path to a fully unblocked machine, verified against 40+ policy versions.</p>
+        <div class="vmeta"><span>Difficulty<b>Hard</b></span><span>Lasts<b>Permanent</b></span><span>Confirmed<b>88%</b></span></div>
+        <div class="blur-lines" aria-hidden="true"><i></i><i></i><i></i></div>
+        <span class="lock">🔒 Tier 3+</span>
+      </article>
+      <article class="vcard">
+        <div class="v-top"><span class="v-id">V-06</span><span class="vtag perm">Reversible</span></div>
+        <h4>Rollback protocol</h4>
+        <p>Every change, written down as you make it, so inspection day ends with a factory-clean machine and zero questions.</p>
+        <div class="vmeta"><span>Difficulty<b>Easy</b></span><span>Lasts<b>On demand</b></span><span>Confirmed<b>97%</b></span></div>
+        <div class="blur-lines" aria-hidden="true"><i></i><i></i><i></i></div>
+        <span class="lock">🔒 Tier 3+</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DONE FOR YOU ================= -->
+<section class="band dfy" id="dfy">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow" data-reveal>Tier 4 · $30/mo</span>
+        <h2 class="d" data-reveal="mask" style="margin-top:14px">You pick three.<br />We do them.</h2>
+      </div>
+      <span class="idx" data-reveal>05 / Done-For-You sessions</span>
+    </div>
+
+    <div class="steps stagger" data-reveal>
+      <div class="step"><span class="n">1</span><h4>Pick your three</h4><p>Tick three outcomes from the Vault in your dashboard — partial, permanent, or a mix.</p><span class="t">≈ 2 minutes</span></div>
+      <div class="step"><span class="n">2</span><h4>Book the slot</h4><p>Nights and weekends around class hours. Most members get same-day or next-day.</p><span class="t">Same day, usually</span></div>
+      <div class="step"><span class="n">3</span><h4>Live session</h4><p>A tech remotes in while you watch every click. Sandwich optional, encouraged.</p><span class="t">≈ 25 minutes</span></div>
+      <div class="step"><span class="n">4</span><h4>Verify &amp; harden</h4><p>We test together on your actual network, harden what we did, and hand you the rollback.</p><span class="t">30-day guarantee</span></div>
+    </div>
+
+    <div class="guarantee" data-reveal>
+      <svg class="g-ico" width="44" height="44" viewBox="0 0 44 44" fill="none" aria-hidden="true">
+        <path d="M22 3 39 9v12c0 10-7 17-17 20C12 38 5 31 5 21V9l17-6z" stroke="#2fe08c" stroke-width="2" fill="rgba(47,224,140,.08)"/>
+        <path d="M14 22l6 6 10-12" stroke="#2fe08c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div>
+        <h4>The 30-day fix-it guarantee</h4>
+        <p>If anything we did on a Tier 4 session stops working inside 30 days, we get back on and repair it free. No tickets, no arguing, no “that's technically a new issue”.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= REVIEWS ================= -->
+<section class="band on-paper" id="reviews">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow" data-reveal>Proof · unedited except typos we left in</span>
+        <h2 class="d" data-reveal="mask" style="margin-top:14px">Members,<br />unfiltered.</h2>
+      </div>
+      <span class="idx" data-reveal>06 / 1,204 verified reviews</span>
+    </div>
+
+    <div class="rev-board stagger" data-reveal>
+      <article class="rev" style="--rot:-1.6deg">
+        <div class="rev-rig v1"><img src="assets/img/chromebook.png" alt="Member's Chromebook" loading="lazy" /><span class="rig-tag">member rig · tx</span></div>
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>ok i was skeptical because the last two sites i paid gave me links that were dead on arrival. this list is actually maintained?? i've been clicking random nodes for three weeks and haven't hit one dead end. <b>five dollars is less than my lunch btw</b></blockquote>
+        <div class="rev-foot"><span class="avatar" style="background:#5b6b79">MR</span><div class="rev-who"><b>Maya R.</b><span>11th grade · texas</span></div><span class="rev-tier" style="background:#5b6b79">Tier 1</span></div>
+      </article>
+
+      <article class="rev" style="--rot:1.4deg; --dy:14px">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>named mine <b>“library-pass”</b> and had the badge done in like two minutes. my whole friend group routes through it now and it still hasn't slowed down. worth the extra two dollars over tier 1 easily.</blockquote>
+        <div class="rev-foot"><span class="avatar" style="background:#ff4a1c">DK</span><div class="rev-who"><b>Devon K.</b><span>member since mar</span></div><span class="rev-tier" style="background:#ff4a1c">Sub One</span></div>
+      </article>
+
+      <article class="rev" style="--rot:-0.8deg; --dy:6px">
+        <div class="rev-rig v2"><img src="assets/img/chromebook.png" alt="Member's Chromebook" loading="lazy" /><span class="rig-tag">member rig · oh</span></div>
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>finals week, campus wifi locked everything, i was two days from giving up. the permanent track for my exact build was right there, took me maybe 40 minutes with the rollback guide as a safety net. <b>best fifteen dollars of my semester.</b></blockquote>
+        <div class="rev-foot"><span class="avatar" style="background:#0f9d76">PS</span><div class="rev-who"><b>Priya S.</b><span>college freshman · ohio</span></div><span class="rev-tier" style="background:#0f9d76">Tier 3</span></div>
+      </article>
+
+      <article class="rev" style="--rot:1.8deg">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>the done-for-you thing is wild. tech hopped on, told me to go make a sandwich, and by the time i was back he was showing me it working on my school's network. i picked three things, he did all three, <b>zero lecture about whether i “should” be doing this.</b></blockquote>
+        <div class="rev-foot"><span class="avatar" style="background:#10151b">MT</span><div class="rev-who"><b>Marcus T.</b><span>session #2, apparently</span></div><span class="rev-tier" style="background:#ff4a1c">Tier 4</span></div>
+      </article>
+
+      <article class="rev" style="--rot:-1.2deg; --dy:10px">
+        <div class="stars" aria-label="4 out of 5 stars">★★★★☆</div>
+        <blockquote>not five stars only bc the method i used got patched on a friday and i had a mini heart attack. but they'd already posted the fix AND explained exactly why it broke, which honestly taught me more than the unblock itself. <b>support answered at 11pm on a sunday. 11pm.</b></blockquote>
+        <div class="rev-foot"><span class="avatar" style="background:#e8890c">JW</span><div class="rev-who"><b>Jordan W.</b><span>10th grade · florida</span></div><span class="rev-tier" style="background:#e8890c">Tier 2</span></div>
+      </article>
+
+      <article class="rev" style="--rot:0.9deg">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>i'm not a tech person at all. i typed a name, picked orange, clicked copy, done. my proxy has my name on it. <b>my NAME.</b> nobody at school has that.</blockquote>
+        <div class="rev-foot"><span class="avatar" style="background:#ff6a3d">KB</span><div class="rev-who"><b>Kayla B.</b><span>badge: orange, obviously</span></div><span class="rev-tier" style="background:#ff4a1c">Sub One</span></div>
+      </article>
+
+      <article class="rev" style="--rot:-1.9deg; --dy:8px">
+        <div class="rev-rig v3"><img src="assets/img/chromebook.png" alt="Member's Chromebook" loading="lazy" /><span class="rig-tag">member rig · 2024 model</span></div>
+        <div class="stars" aria-label="4 out of 5 stars">★★★★☆</div>
+        <blockquote>assumed nothing worked on the newer models since every video online is from 2021. build check told me my exact version, which track applies, and flagged the two that would've wasted my weekend. <b>saved me from bricking my laptop basically.</b></blockquote>
+        <div class="rev-foot"><span class="avatar" style="background:#0f9d76">AN</span><div class="rev-who"><b>Alex N.</b><span>12th grade · 2024 build</span></div><span class="rev-tier" style="background:#0f9d76">Tier 3</span></div>
+      </article>
+
+      <article class="rev" style="--rot:1.1deg; --dy:4px">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>bought this for my son's old chromebook that we own outright. the tech walked us through everything on the call and showed us the rollback too, so we can put it back to stock whenever we want. <b>professional, punctual, patient with my questions.</b></blockquote>
+        <div class="rev-foot"><span class="avatar" style="background:#10151b">SO</span><div class="rev-who"><b>Sam O.</b><span>parent · family device</span></div><span class="rev-tier" style="background:#ff4a1c">Tier 4</span></div>
+      </article>
+    </div>
+
+    <div class="rev-sum" data-reveal>
+      <div>
+        <div class="big">4.9<span style="font-size:0.4em;color:var(--tx-light-mut)">/5</span></div>
+        <span class="mono" style="color:var(--tx-light-mut)">1,204 verified member reviews</span>
+      </div>
+      <div class="bars">
+        <div class="brow"><span>5 ★</span><span class="bar"><i style="width:91%"></i></span><span>91%</span></div>
+        <div class="brow"><span>4 ★</span><span class="bar"><i style="width:7%"></i></span><span>7%</span></div>
+        <div class="brow"><span>3 ★</span><span class="bar"><i style="width:1.4%"></i></span><span>1%</span></div>
+        <div class="brow"><span>2 ★</span><span class="bar"><i style="width:0.6%"></i></span><span>1%</span></div>
+      </div>
+      <p style="margin:0;font-size:14px;color:var(--tx-light-mut);max-width:34ch">Reviews are pulled from member dashboards after 30 days of membership. We publish the 1-star ones too — scroll the wall in your dashboard.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="band" id="faq">
+  <div class="wrap" style="max-width:980px">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow" data-reveal>Straight answers</span>
+        <h2 class="d" data-reveal="mask" style="margin-top:14px">Before you<br />pay us.</h2>
+      </div>
+      <span class="idx" data-reveal>07 / FAQ</span>
+    </div>
+
+    <div class="faq-list" data-reveal>
+      <div class="faq-item">
+        <button class="faq-q"><span class="qn">01</span> Is any of this legal? Will I get in trouble? <span class="pm"></span></button>
+        <div class="faq-a"><div><p>Proxies and network tools are legal products used by businesses and privacy-conscious people everywhere. What matters is <em>whose device</em> and <em>whose network</em> you're on: a school-issued Chromebook is bound by your district's acceptable-use policy, and breaking it can carry school consequences even when nothing illegal happens. That's why every guide labels its risk, every Tier 4 tech confirms you own the device or have the owner's permission before touching anything, and the rollback guides exist. We teach; you decide.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span class="qn">02</span> What's the difference between “partial” and “permanent”? <span class="pm"></span></button>
+        <div class="faq-a"><div><p>A <b>partial</b> unblock gets some things working — usually the browser, or specific sites — and typically survives hours to weeks before a policy push closes it. A <b>permanent</b> unblock changes the machine itself so the block doesn't come back, and it's only in Tier 3 and up because it's build-specific and needs the rollback protocol alongside it. Every method in the Vault is labelled with exactly which one it is and how long members report it lasting.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span class="qn">03</span> How is the proxy list actually tested? <span class="pm"></span></button>
+        <div class="faq-a"><div><p>Every node is swept every six hours from Oregon, Frankfurt and Singapore: handshake, real page fetch, latency, and a canary request that confirms the node isn't silently blocking half the web. Two consecutive failures pulls a node; replacements drop in within the hour and the swap counter on the status board is public. Friday drops add fresh capacity whether we lost nodes or not.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span class="qn">04</span> Will this work on <em>my</em> Chromebook? <span class="pm"></span></button>
+        <div class="faq-a"><div><p>Tier 1 works on anything with a browser — that's the point of proxies. Tiers 2–4 depend on your build and policy version, so we run a <b>build check</b>: paste your ChromeOS version and policy fingerprint and the dashboard shows which tracks apply to you, including the ones that don't. If your build isn't covered by anything, we tell you before you pay, not after.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span class="qn">05</span> What exactly does “you choose three” mean in Tier 4? <span class="pm"></span></button>
+        <div class="faq-a"><div><p>Your dashboard lists every outcome the Vault can produce — a working browser route, a named personal proxy, a partial unblock, a full release, a clean rollback, and so on. On Tier 4 you tick any three of them per month. A tech then performs those three on a live remote session while you watch, verifies them with you on your network, and leaves you the rollback notes.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span class="qn">06</span> Can I cancel without a fight? <span class="pm"></span></button>
+        <div class="faq-a"><div><p>Everything is month-to-month. Cancel in the dashboard in two clicks; you keep access until the end of the period you paid for; your named proxy URL is held for 30 days in case you come back. No retention calls, no guilt emails, no “are you sure?” maze — we made the cancel button the same orange as the buy button.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span class="qn">07</span> What do you log? <span class="pm"></span></button>
+        <div class="faq-a"><div><p>On personal (Sub One) instances: connection metadata needed to keep the node alive — timestamps, bytes, latency — and nothing about which sites you visit. Shared Wall nodes aggregate the same stats across all users. Tier 4 sessions are recorded only if you ask for a copy. Billing runs through a standard payment processor; we never see card numbers.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span class="qn">08</span> What happens when a method dies mid-month? <span class="pm"></span></button>
+        <div class="faq-a"><div><p>The method gets stamped <b>PATCHED</b> with the date, a post-mortem explains what changed, and — in most cases — a replacement ships in the same update. Members on affected tiers get a dashboard ping, and if a Tier 3+ track dies on your specific build, tech chat treats it as priority until it's fixed or rolled back cleanly.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="band cta-band" id="cta">
+  <div class="wrap cta-in">
+    <div>
+      <h2 class="d" data-reveal="mask">Pick your tier.<br />Be unblocked<br />by Friday.</h2>
+      <p data-reveal style="margin-top:20px">Not sure yet? Take ten of the Wall's nodes for a week — free, no card, no drip campaign. If the list impresses you, upgrading is one click.</p>
+    </div>
+    <div data-reveal>
+      <form class="cta-form" id="ctaForm" novalidate>
+        <input type="email" id="ctaEmail" placeholder="you@whatever.school" aria-label="Email address" required />
+        <button class="btn btn--ink" type="submit">Send my 10 free nodes <span class="ar">→</span></button>
+      </form>
+      <div class="cta-ok" id="ctaOk">✓ Done — check your inbox. Node list expires in 7 days.</div>
+      <p class="cta-note">No card · no spam · unsubscribe is one click, we promise</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="#top" aria-label="BreakGG home">
+          <svg class="mark" viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="11" fill="#ff4a1c"/><path d="M28 6 17 27h7l-4 15 13-22h-8l3-14z" fill="#fff"/></svg>
+          <span class="brand-word">BREAK<b>GG</b></span>
+        </a>
+        <p style="margin-top:16px">The Chromebook access lab. Tested proxies, honest methods, and humans who answer at 11pm.</p>
+        <span class="head-status" style="margin-top:16px"><i class="dot"></i> All systems · swept <span data-since>4 min</span> ago</span>
+      </div>
+      <div class="foot-col">
+        <h5>Product</h5>
+        <a href="#wall">The Wall · $5</a>
+        <a href="#subone">Sub One · $7</a>
+        <a href="#plans">Method Vault · $10</a>
+        <a href="#plans">Full Release · $15</a>
+        <a href="#dfy">Done-For-You · $30</a>
+      </div>
+      <div class="foot-col">
+        <h5>Company</h5>
+        <a href="#reviews">Reviews</a>
+        <a href="#faq">FAQ</a>
+        <a href="#wall">Live status board</a>
+        <a href="#cta">Free node sample</a>
+      </div>
+      <div class="foot-col">
+        <h5>Fine print</h5>
+        <a href="#faq">Terms</a>
+        <a href="#faq">Privacy &amp; logging</a>
+        <a href="#faq">Refunds</a>
+        <a href="#faq">Responsible use</a>
+      </div>
+    </div>
+
+    <div class="responsible">
+      <b>Responsible use</b>
+      BreakGG tools are for devices you own or have explicit permission to modify, and networks you're allowed to use. School-issued hardware is bound by your district's policy — read it, know the stakes, and keep the rollback guides handy. We teach; you decide.
+    </div>
+
+    <div class="foot-bottom">
+      <span>© 2026 BreakGG · built by members, for members</span>
+      <span>Made with too many chromebooks and not enough sleep</span>
+    </div>
+  </div>
+</footer>
+
+<script type="module" src="assets/js/main.js"></script>
+</body>
+</html>
